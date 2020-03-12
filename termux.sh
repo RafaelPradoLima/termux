@@ -34,7 +34,7 @@ function install_zsh() {
 		fi
 	fi
 
-	chsh -s zsh
+	chsh -s $(which zsh)
 
 }
 
