@@ -14,7 +14,7 @@ apt update && apt -y upgrade && apt install -y curl
 # Installation
 Just paste the following code into Termux and adjust the parameters to customize what the script will install:
 ```bash
-curl -fsSL https://git.io/termux | bash -s -- --zsh --python --neovim
+curl -fsSL https://git.io/JUYYw | bash -s -- --z -p -n -t -js -g -pg
 ```
 
 # Script parameters
