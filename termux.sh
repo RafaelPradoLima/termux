@@ -3,7 +3,7 @@
 function install_zsh() {
 	if ! [ -x "$(command -v zsh)" ]; then
 		echo -e "\\e[32m[ zsh ]\\e[m not found, installing"
-		apt-get install -y zsh >/dev/null 2>&1
+		sudo apt-get install -y zsh >/dev/null 2>&1
 	fi
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo -e "\\e[32m[ oh-my-zsh ]\\e[m clonning repository"
@@ -57,7 +57,7 @@ function install_elixir() {
 function install_node() {
 	if ! [ -x "$(command -v node)" ]; then
 		echo -e "\\e[32m[ nodejs ]\\e[m not found, installing"
-		apt-get install -y nodejs >/dev/null 2>&1
+		sudo apt-get install -y nodejs >/dev/null 2>&1
 	fi
 	echo -e "\\e[32m[ npm ]\\e[m configuring prefix"
 	mkdir -p "$HOME/.npm-packages"
@@ -79,7 +79,7 @@ function install_node() {
 function install_requirements() {
 	if ! [ -x "$(command -v git)" ]; then
 		echo -e "\\e[32m[ git ]\\e[m not found, installing"
-		apt-get install -y git >/dev/null 2>&1
+		sudo apt-get install -y git >/dev/null 2>&1
 	fi
 
 	if [ ! -d "$HOME/.local/bin" ]; then
@@ -102,7 +102,7 @@ function install_requirements() {
 function install_postgres() {
 	if ! [ -x "$(command -v pg_ctl)" ]; then
 		echo -e "\\e[32m[ postgres ]\\e[m not found, installing"
-		apt-get install -y postgresql postgresql-dev >/dev/null 2>&1
+		sudo apt-get install -y postgresql postgresql-dev >/dev/null 2>&1
 
 		echo -e "\\e[32m[ postgres ]\\e[m creating configs"
 		initdb ~/.pg >/dev/null 2>&1
@@ -114,7 +114,7 @@ function install_postgres() {
 		if ask "\\e[32m[ postgres ]\\e[m install pgcli? (optional)" Y; then
 			if ! [ -x "$(command -v python)" ]; then
 				echo -e "\\e[32m[ postgres ]\\e[m python not found, installing"
-				apt-get install -y python python-dev >/dev/null 2>&1
+				sudo apt-get install -y python python-dev >/dev/null 2>&1
 			fi
 			pip install pgcli >/dev/null 2>&1
 			echo -e "\\e[32m[ pgcli ]\\e[m creating configs"
@@ -126,27 +126,27 @@ function install_postgres() {
 function install_neovim() {
 	if ! [ -x "$(command -v nvim)" ]; then
 		echo -e "\\e[32m[ neovim ]\\e[m not found, installing"
-		apt-get install -y neovim>/dev/null 2>&1
+		sudo apt-get install -y neovim>/dev/null 2>&1
 	fi
 	if ask "\\e[32m[ termux ]\\e[m install python module? (highly recommended)" Y; then
 		if ! [ -x "$(command -v clang)" ]; then
 			echo -e "\\e[32m[ neovim ]\\e[m clang not found, installing"
-			apt-get install -y clang libcrypt-dev>/dev/null 2>&1
+			sudo apt-get install -y clang libcrypt-dev>/dev/null 2>&1
 		fi
 		if ! [ -x "$(command -v python)" ]; then
 			echo -e "\\e[32m[ neovim ]\\e[m python not found, installing"
-			apt-get install -y python python-dev >/dev/null 2>&1
+			sudo apt-get install -y python python-dev >/dev/null 2>&1
 		fi
 		pip install neovim >/dev/null 2>&1
 	fi
 	if ask "\\e[32m[ neovim ]\\e[m install ruby module? (optional)" Y; then
 		if ! [ -x "$(command -v clang)" ]; then
 			echo -e "\\e[32m[ neovim ]\\e[m clang not found, installing"
-			apt-get install -y clang make >/dev/null 2>&1
+			sudo apt-get install -y clang make >/dev/null 2>&1
 		fi
 		if ! [ -x "$(command -v ruby)" ]; then
 			echo -e "\\e[32m[ neovim ]\\e[m ruby not found, installing"
-			apt-get install -y ruby ruby-dev make>/dev/null 2>&1
+			sudo apt-get install -y ruby ruby-dev make>/dev/null 2>&1
 		fi
 		gem install neovim >/dev/null 2>&1
 	fi
@@ -158,7 +158,7 @@ function install_neovim() {
 function install_ruby() {
 	if ! [ -x "$(command -v ruby)" ]; then
 		echo -e "\\e[32m[ ruby ]\\e[m not found, installing"
-		apt-get install -y ruby ruby-dev >/dev/null 2>&1
+		sudo apt-get install -y ruby ruby-dev >/dev/null 2>&1
 	fi
 	echo -e "\\e[32m[ ruby ]\\e[m installing pry"
 	gem install pry >/dev/null 2>&1
@@ -167,7 +167,7 @@ function install_ruby() {
 function install_tmux() {
 	if ! [ -x "$(command -v tmux)" ]; then
 		echo -e "\\e[32m[ tmux ]\\e[m not found, installing"
-		apt-get install -y tmux >/dev/null 2>&1
+		sudo apt-get install -y tmux >/dev/null 2>&1
 	fi
 	curl -fsLo "$HOME/.tmux.conf" https://raw.githubusercontent.com/onlurking/termux/master/.termux/.tmux.conf
 }
@@ -175,19 +175,19 @@ function install_tmux() {
 function install_python() {
 	if ! [ -x "$(command -v python)" ]; then
 		echo -e "\\e[32m[ python ]\\e[m not found, installing"
-		apt-get install -y python python-dev >/dev/null 2>&1
+		sudo apt-get install -y python python-dev >/dev/null 2>&1
 	fi
 	curl -fsLo "$HOME/.pythonrc" https://cdn.rawgit.com/onlurking/termux/master/.termux/.pythonrc
 }
 
 function install_php() {
 	echo -e "\\e[32m[ php ]\\e[m not found, installing"
-	apt-get install -y nginx php php-fpm >/dev/null 2>&1
+	sudo apt-get install -y nginx php php-fpm >/dev/null 2>&1
 }
 
 function install_golang() {
   echo -e "\\e[32m[ go ]\\e[m not found, installing"
-	apt-get install -y golang >/dev/null 2>&1
+	sudo apt-get install -y golang >/dev/null 2>&1
   mkdir $HOME/.go
   echo 'export GOPATH="$PATH:$HOME/.go"' >> $HOME/.profile
   echo 'export PATH="$PATH:$HOME/.go/bin"' >> $HOME/.profile
@@ -230,28 +230,19 @@ function start() {
 	echo -e "\\n  ▓▓▓▓▓▓▓▓▓▓▓▓"
 	echo -e " ░▓    about ▓ custom termux config files"
 	echo -e " ░▓   author ▓ onlurking <diogofelix@acm.org>"
-	echo -e " ░▓     code ▓ https://git.io/termux"
+	echo -e " ░▓   update ▓ RafaelPradoLima <email@rprado.dev>"
+	echo -e " ░▓     code ▓ https://git.io/JUYYw"
 	echo -e " ░▓▓▓▓▓▓▓▓▓▓▓▓"
 	echo -e " ░░░░░░░░░░░░\\n"
 }
 
 function finish() {
-	if ask "\\e[32m[ storage ]\\e[m setup external storage?" Y; then
-		termux-setup-storage
-	fi
-
 	if ask "\\e[32m[ termux ]\\e[m hide welcome message?" Y; then
 		touch "$HOME/.hushlogin"
 	fi
 
 	if ! grep -q "source ~/.profile" $HOME/.bash_profile >/dev/null 2>&1; then
 		echo -e "\nif [ -f ~/.profile ]; then\n  source ~/.profile\nfi" >> $HOME/.bash_profile
-	fi
-
-	if ask "\\e[32m[ finished ]\\e[m close termux to apply settings?" Y; then
-		pkill termux
-	else
-		echo -e "\\e[32m[ warning ]\\e[m please restart termux to apply settings"
 	fi
 }
 
@@ -323,7 +314,7 @@ if [ $ruby ]; then
 	install_ruby
 fi
 
-if [ $golang ]; then
+if [ $golang ]; thenusermod -aG sudo
   install_golang
 fi
 
@@ -334,7 +325,7 @@ fi
 if [ $elixir ]; then
 	if ! [ -x "$(command -v erl)" ]; then
 		echo -e "\\e[32m[ erlang ]\\e[m not found, installing"
-		apt-get install -y erlang >/dev/null 2>&1
+		sudo apt-get install -y erlang >/dev/null 2>&1
 	fi
 	if [ ! -d "$HOME/.elixir" ]; then
 		install_elixir
